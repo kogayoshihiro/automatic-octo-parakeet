@@ -1,0 +1,179 @@
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+	<title>カウント・アウト Ver1</title>
+
+	<script src="Style.js"></script>
+	<script language="JavaScript"><!--
+   //=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=//
+   //=                                                           =//
+   //=  Copyright (C) 1998-2004 WEST MiRa. All rights reserved.  =//
+   //=            WEST MiRa http://www.west-mira.jp/            =//
+   //=                                                           =//
+   //=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=//
+
+	/**************************************************
+	基本設定
+	**************************************************/
+
+	/*
+	アウト数は、最大アウト数～最少アウト数内で
+	自動的に決定されます。
+	*/
+	//最大アウト数
+	max_num = 50;
+	//最少アウト数
+	min_num = 20;
+
+	/*
+	カウントは、最大カウント～最少カウント内で
+	自動的に決定されます。
+	*/
+	max_cou = 5;
+	min_cou = 3;
+
+
+	/**************************************************
+	ウィンドウデザイン
+	**************************************************/
+
+	//ウィンドウの背景色を指定
+	bg_color = '#ffffff';
+
+	//ウィンドウの文字色を指定
+	text_color = '#000000';
+
+	//ウィンドウのリンク色を指定
+	link_color = '#0000ff';
+
+	//ウィンドウのvlink色を指定
+	vlink_color = '#9932cc';
+
+	//ウィンドウのalink色を指定
+	alink_color = '#ff00ff';
+
+
+	/**************************************************
+	フォームデザイン
+	**************************************************/
+
+	//メッセージ背景色の指定
+	MES_BGCOLOR = '#f8f5d0';
+
+	//メッセージ枠色の指定
+	MES_BODERCOLOR = '#6e670f';
+
+	//メッセージ文字色の指定
+	MES_TEXTCOLOR = '#615c18';
+
+	//ボタン背景色の指定
+	BUTTON_BGCOLOR = '#f5c8b4';
+
+	//ボタン枠色の指定
+	BUTTON_BODERCOLOR = '#bc4a19';
+
+	//ボタン文字色の指定
+	BUTTON_TEXTCOLOR = '#8c4020';
+
+
+	/**************************************************
+	クリア後動作
+	**************************************************/
+
+	//クリア後の動作指定。希望する動作によって、0か1の値を指定下さい
+	//0：メッセージ表示　1：メッセージ表示後、ページ移動
+	GOAL_ACTION = 0;
+
+	//メッセージ表示の場合の、勝利時に表示するメッセージ指定
+	GOAL_MESSAGE1 = 'YOU WINNER!\n\n貴方の勝ちです！\n';
+
+	//メッセージ表示の場合の、敗北時に表示するメッセージ指定
+	GOAL_MESSAGE2 = 'GAME OVER...\n\n貴方の負けです……';
+
+	//ページ移動の場合の、勝利時に移動するURL指定
+	GOAL_URL1 = 'Goal1.html';
+
+	//ページ移動の場合の、勝利時に移動するURL指定
+	GOAL_URL2 = 'Goal2.html';
+
+//=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+//                   ここから変更不可
+//=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+
+	mojis  ='<style type="text\/css"><!--\n';
+	mojis +='.textsty {\n';
+	mojis +='font-size:90%; background-color:' + MES_BGCOLOR + '; color:' + MES_TEXTCOLOR + '; border-style:outset; \n';
+	mojis +='border-color:' + MES_BODERCOLOR + '; text-align:center;}\n';
+	mojis +='.buttonsty {\n';
+	mojis +='font-size:90%; background-color:' + BUTTON_BGCOLOR + '; color:' + BUTTON_TEXTCOLOR + '; border-style:outset; \n';
+	mojis +='border-color:' + BUTTON_BODERCOLOR + ';}\n';
+	mojis +='-->\n';
+	mojis +='<\/style>\n';
+	document.write(mojis);
+
+//=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+//                   ここまで変更不可
+//=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+
+//-->
+</script>
+
+</head>
+
+<!--=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+                     ここから変更不可
+=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#-->
+
+<script language="JavaScript">
+<!--//Copyright (C) WEST MiRa http://www.west-mira.jp
+	document.write('<body onLoad="GameReset();"  text="' + text_color + '" bgcolor="' + bg_color + '" link="' + link_color + '" vlink="' + vlink_color + '" alink="' + alink_color + '">\n');
+//-->
+</script>
+<noscript><body></noscript>
+
+<!--=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+                     ここまで変更不可
+=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#-->
+
+
+<!--=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+                     ここから変更不可
+=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#-->
+
+<table align="center">
+<form name="form1">
+<tr align="center">
+	<td colspan="3"><textarea name="text1" cols="50" rows="8" class="textsty" readonly></textarea></td>
+</tr>
+<tr align="center">
+	<td>
+
+	<script language="JavaScript"><!--
+
+	for(i = 0; i < max_cou; i++)
+		{
+		mojis  = '<input type="button" id="button' +  i + '" name="button' +  i + '" ';
+		if(button_cen == i)
+			{ mojis += 'value="スタート" style="display:inline;"'; }
+		else 
+			{ mojis += 'value="  " style="display:none;"'; }
+		mojis += ' onClick="Counts(' + i + ');" class="buttonsty">  ';
+		document.write(mojis);
+		}
+
+//-->
+</script>
+	<br><br>
+	<input type="button" value="リセット" onClick="GameReset();" class="buttonsty">
+	</td>
+</tr>
+</form>
+</table>
+
+<!--=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+                     ここまで変更不可
+=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#-->
+
+
+</body></html>
